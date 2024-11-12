@@ -1,9 +1,7 @@
 import java.util.*;
-
 public class Juego {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         // Crear el mapa y los ejércitos
         Mapa mapa = new Mapa();  
         mapa.generarEjercitos();       

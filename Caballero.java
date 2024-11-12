@@ -1,39 +1,47 @@
 public class Caballero extends Soldado {
-    private String arma;  // "espada" o "lanza"
-    private boolean montado;
+    private boolean montado;   // Estado: montado o desmontado
+    private String armaActual; // Puede ser "espada" o "lanza"
 
+    // Constructor
     public Caballero(int id, String nombre, int nivelAtaque, int nivelDefensa, int nivelVida, int velocidad, Ejercito ejercito) {
         super(id, nombre, nivelAtaque, nivelDefensa, nivelVida, velocidad, ejercito);
-        this.arma = "espada";
-        this.montado = false;
+        this.montado = false;  // El caballero comienza desmontado
+        this.armaActual = "espada";  // Comienza con espada
     }
 
+    // Acción particular: montar el caballo
     public void montar() {
         if (!montado) {
             montado = true;
-            arma = "lanza";
-            System.out.println(this.nombre + " se ha montado y ahora tiene una lanza.");
+            armaActual = "lanza";
+            System.out.println(getNombre() + " se ha montado en su caballo y ha cambiado a lanza.");
+        } else {
+            System.out.println(getNombre() + " ya está montado.");
         }
     }
 
+    // Acción particular: desmontar el caballo
     public void desmontar() {
         if (montado) {
             montado = false;
-            arma = "espada";
-            System.out.println(this.nombre + " se ha desmontado y ahora tiene una espada.");
+            armaActual = "espada";
+            System.out.println(getNombre() + " se ha desmontado y ha cambiado a espada.");
+        } else {
+            System.out.println(getNombre() + " ya está desmontado.");
         }
     }
 
+    // Acción particular: envestir
     public void envestir() {
         if (montado) {
-            System.out.println(this.nombre + " ha realizado una embestida con lanza.");
+            System.out.println(getNombre() + " ha envestido con su lanza.");
         } else {
-            System.out.println(this.nombre + " ha atacado dos veces con espada.");
+            System.out.println(getNombre() + " ha envestido con su espada (2 ataques).");
         }
     }
 
     @Override
     public String toString() {
-        return super.toString() + " | Arma: " + arma + " | Montado: " + montado;
+        return super.toString() + " | Montado: " + (montado ? "Sí" : "No") + " | Arma: " + armaActual;
     }
 }
