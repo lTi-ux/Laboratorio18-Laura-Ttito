@@ -155,7 +155,6 @@ public class Mapa {
             tablero[fila2][columna2] = null;
         }
     }
-
     // Método para acceder a la lista de ejércitos
     public List<Ejercito> getEjercitos() {
         return ejercitos;
